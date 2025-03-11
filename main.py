@@ -1,7 +1,4 @@
 from fasthtml.common import *
-from monsterui.all import render_md
-import os
-from datetime import datetime
 
 # Initialize the FastHTML app
 app, rt = fast_app(live=True)
@@ -21,45 +18,44 @@ def base_template(page_title, content):
         Body(
             Div(
                 content,
-                cls="bg-[#f9f8f6] text-gray-900 min-h-screen pt-16 pb-12 p-36 font-serif flex flex-col items-stretch"
+                cls="bg-[#fff] text-gray-900 min-h-screen pt-16 pb-12 p-36 font-serif flex flex-col items-stretch"
             )
         ),
     )
-
-# Function to read and parse blog posts
-def get_blog_posts():
-    posts = []
-    for filename in os.listdir("blogs"):
-        if filename.endswith(".md"):
-            with open(f"blogs/{filename}", "r") as f:
-                content = f.read()
-                parts = content.split("---", 2)
-                metadata, content = (parts[1].strip(), parts[2].strip())
-                meta_dict = {k.strip(): v.strip().strip('"') for k, v in (line.split(":", 1) for line in metadata.splitlines() if ":" in line)}
-                posts.append({
-                    "title": meta_dict.get("title", "Untitled"),
-                    "date": meta_dict.get("date", "Unknown Date"),
-                    "summary": meta_dict.get("summary", "No summary provided."),
-                    "article": content.split("\n\n")[0] if content else "",
-                    "filename": filename
-                })
-    return sorted(posts, key=lambda x: datetime.strptime(x["date"], "%B %d, %Y") if x["date"] != "Unknown Date" else datetime.min, reverse=True)
 
 # Function to get projects
 def get_projects():
     return [
         {
-            "title": "babyARC",
-            "description": "A tiny abstraction and reasoning dataset.",
-            "link": "https://github.com/rsinghal757/babyARC",
-            "image": "assets/pebble.png",
+            "title": "Pebble",
+            "description": "An AI-tutor for K-12 students to help them learn programming and build their own projects.",
+            "link": "https://getpebble.in",
+            "image": "assets/pebble-1.png",
         },
         {
-            "title": "SAP-1 CPU Emulator",
-            "description": "A Simple As Possible (SAP-1) based CPU emulator.",
-            "link": "https://github.com/rsinghal757/sap-1",
+            "title": "Reader-1",
+            "description": "A cyberdeck e-reader built with a Raspberry Pi and a Waveshare E-Ink display.",
+            "link": None,
+            "image": "assets/reader-1.png",
+        },
+        {
+            "title": "BabyARC",
+            "description": "BabyARC is a tiny abstraction and reasoning dataset inspired by the original Abstraction and Reasoning Corpus by Francois Chollet.",
+            "link": "https://github.com/rsinghal757/babyARC",
             "image": None,
-    },
+        },
+        {
+            "title": "AiTone",
+            "description": "AiTone is a web application that allows users to write and execute music code in the browser using Tone.js, with the ability to modify the code using natural language requests processed by AI.",
+            "link": "https://ai-tone.netlify.app/",
+            "image": "assets/aitone-1.png",
+        },
+        {
+            "title": "Email Signature Generator",
+            "description": "An email signature generator that allows users to create and customize email signatures with their name, title, and contact information.",
+            "link": "https://emailsignature.in",
+            "image": "assets/emailsig-1.png",
+        },
     ]
 
 # Function to get social links
@@ -67,58 +63,9 @@ def get_social_links():
     return [
         {"platform": "Twitter", "url": "https://x.com/0xRohitSinghal"},
         {"platform": "GitHub", "url": "https://github.com/rsinghal757"},
+        {"platform": "LinkedIn", "url": "https://www.linkedin.com/in/rsinghal757/"},
         {"platform": "Medium", "url": "https://medium.com/@rsinghal757"},
-        {"platform": "Writing", "url": "/blogs"},
     ]
-
-### Routes ###
-
-# Blog posts list
-@rt("/blogs")
-def get():
-    posts = get_blog_posts()
-    body_content = Div(
-        Div(
-            Div(
-                H1("Blog Posts", cls="text-5xl font-serif mb-12 leading-tight"),
-                cls="flex items-baseline space-x-6"
-            ),
-            *[Div(
-                H3(post["title"], cls="text-2xl font-medium font-serif"),
-                P(post["date"], cls="text-gray-500 text-lg italic mb-8"),
-                P(post["summary"], cls="text-gray-700 text-lg mb-8"),
-                A("Read More →", href=f"/blogs/{post['filename']}", cls="text-gray-600 hover:underline text-lg"),
-                cls="mb-8 border-b pb-8"
-            ) for post in posts],
-            cls="mb-12"
-        ),
-        cls="max-w-7xl w-full leading-relaxed"
-    )
-    return base_template("Blog Posts", body_content)
-
-# Blog post reader
-@rt("/blogs/{filename}")
-def get(filename: str):
-    filepath = f"blogs/{filename}"
-    if not os.path.exists(filepath):
-        return base_template("404 - Not Found", Div(H1("404 - Not Found"), cls="text-4xl font-bold text-center"))
-    
-    with open(filepath, "r") as f:
-        content = f.read()
-        parts = content.split("---", 2)
-        metadata, content = (parts[1].strip(), parts[2].strip()) if len(parts) >= 2 else ("", parts[0].strip())
-        meta_dict = {k.strip(): v.strip().strip('"') for k, v in (line.split(":", 1) for line in metadata.splitlines() if ":" in line)}
-        title = meta_dict.get("title", "Untitled")
-        date = meta_dict.get("date", "Unknown Date")
-        html_content = render_md(content)
-
-    body_content = Div(
-        H1(title, cls="text-5xl font-medium font-serif border-b pb-12 mb-12 leading-tight"),
-        P(date, cls="text-gray-500 text-lg italic mb-8"),
-        Div(html_content, cls="prose prose-lg max-w-7xl leading-relaxed"),
-        cls="max-w-7xl w-full leading-relaxed"
-    )
-    return base_template(title, body_content)
 
 # Homepage route
 @rt("/")
@@ -130,7 +77,7 @@ def get():
             Div(
                 H3("Rohit Singhal", cls="text-5xl font-bold font-serif leading-tight"),
                 Div(
-                    *[A(link["platform"], href=link["url"], cls="text-gray-600 font-serif hover:underline") for link in social_links],
+                    *[A(link["platform"], href=link["url"], target="_blank", cls="text-gray-600 font-serif hover:underline") for link in social_links],
                     cls="flex flex-row text-gray-500 items-stretch w-full justify-between"
                 ),
                 cls="flex flex-col items-left space-y-2"
@@ -145,10 +92,14 @@ def get():
                 ),
                 cls="flex flex-col items-end space-y-0"
             ),
-            cls="flex justify-between items-center mb-16"
+            cls="flex justify-between items-center mb-12"
         ),
         Div(
-            H2("What I'm working on", cls="text-3xl font-medium font-serif border-b pb-8 text-left"),
+            P("Hey, I'm Rohit Singhal. Currently, I'm working on ", A("Pebble", href="https://getpebble.in", cls="underline"), ". Pebble is an AI-tutor for K-12 students to help them learn programming and build their own projects.", cls="text-gray-600 text-lg"),
+            cls="flex flex-col items-left space-y-2 mb-12 max-w-2xl"
+        ),
+        Div(
+            H2("My Museum of Passion Projects", cls="text-3xl font-medium font-serif border-b pb-8 text-left"),
             *[Div(
                 Div(
                     Div(
@@ -156,7 +107,7 @@ def get():
                         P(project["description"], cls="text-gray-500 text-lg"),
                         cls="flex flex-col items-left space-y-2"
                     ),
-                    A("View Project →", href=project["link"], cls="text-gray-600 mt-12 hover:underline text-lg"),
+                    A("View Project →", href=project["link"], target="_blank", cls="text-gray-600 mt-12 hover:underline text-lg") if project["link"] else None,
                     cls="flex flex-col items-stretch justify-between w-full"
                 ),
                 Img(src=project["image"], alt=project["title"], cls="w-2/3 rounded-lg"),
