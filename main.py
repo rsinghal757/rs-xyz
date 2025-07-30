@@ -95,11 +95,11 @@ def get():
             cls="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-12"
         ),
         Div(
-            P("Hey, I'm Rohit Singhal. Currently, I'm working on ", A("Pebble", href="https://getpebble.in", cls="underline"), ". Pebble is an AI-tutor for K-12 students to help them learn programming and build their own projects.", cls="text-gray-600 text-base md:text-lg"),
+            P("I'm Rohit. For money and fun, I do software design and engineering.", cls="text-gray-600 text-base md:text-lg"),
             cls="flex flex-col items-left space-y-2 mb-8 md:mb-12 max-w-2xl"
         ),
         Div(
-            H2("My Museum of Passion Projects", cls="text-2xl md:text-3xl font-medium font-serif border-b pb-4 md:pb-8 text-left"),
+            H2("Work", cls="text-2xl md:text-3xl font-medium font-serif border-b pb-4 md:pb-8 text-left"),
             *[Div(
                 Div(
                     Div(
@@ -110,7 +110,7 @@ def get():
                     A("View Project →", href=project["link"], target="_blank", cls="text-gray-600 mt-6 md:mt-12 hover:underline text-base md:text-lg") if project["link"] else None,
                     cls="flex flex-col items-stretch justify-between w-full"
                 ),
-                Img(src=project["image"], alt=project["title"], cls="w-full md:w-2/3 mt-4 md:mt-0 rounded-lg") if project["image"] else None,
+                Img(src=project["image"], alt=project["title"], cls="w-full md:w-2/3 mt-4 md:mt-0") if project["image"] else None,
                 cls="border-b pb-8 md:pb-16 pt-8 md:pt-16 flex flex-col md:flex-row items-center md:items-start lg:items-start xl:items-start justify-between space-x-0 md:space-x-4 lg:space-x-4 xl:space-x-4"
             ) for project in projects],
             cls="p-0 mb-12 md:mb-24"
