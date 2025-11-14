@@ -10,6 +10,7 @@ def base_template(page_title, content):
     return Html(
         Head(
             Title(page_title),
+            Link(rel="icon", href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>"),
             Link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/uikit@3.16.26/dist/css/uikit.min.css"),
             Script(src="https://cdn.jsdelivr.net/npm/uikit@3.16.26/dist/js/uikit.min.js"),
             Script(src="https://cdn.jsdelivr.net/npm/uikit@3.16.26/dist/js/uikit-icons.min.js"),
@@ -66,6 +67,7 @@ def get_social_links():
         {"platform": "GitHub", "url": "https://github.com/rsinghal757"},
         {"platform": "LinkedIn", "url": "https://www.linkedin.com/in/rsinghal757/"},
         {"platform": "Medium", "url": "https://medium.com/@rsinghal757"},
+        {"platform": "Portfolio", "url": "https://www.figma.com/proto/P8VfPiBlPuPYWsPqL5z2TM/Work_Compilation?node-id=32-21535&t=aVwbWlahk1NcbnBf-0&scaling=min-zoom&content-scaling=fixed&page-id=31%3A18497&hide-ui=1"},
     ]
 
 # Homepage route
@@ -99,7 +101,7 @@ def get():
             cls="flex flex-col items-left space-y-2 mb-8 md:mb-12 max-w-2xl"
         ),
         Div(
-            H2("Work", cls="text-2xl md:text-3xl font-medium font-serif border-b pb-4 md:pb-8 text-left"),
+            H2("Selected Projects", cls="text-2xl md:text-3xl font-medium font-serif border-b pb-4 md:pb-8 text-left"),
             *[Div(
                 Div(
                     Div(
