@@ -1,3 +1,4 @@
+import os
 from fasthtml.common import *
 
 # Initialize the FastHTML app
@@ -121,5 +122,4 @@ def get():
     )
     return base_template("Rohit Singhal", body_content)
 
-# Run the app on port 5001
-serve(port=5001)
+serve(port=int(os.environ.get("PORT", 5001)))
