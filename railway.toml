@@ -1,8 +1,1 @@
-[build]
-builder = "RAILPACK"
 
-[build.env]
-RAILPACK_PYTHON_VERSION = "3.11"
-
-[deploy]
-startCommand = "python main.py"
