@@ -1,1 +1,1 @@
-python_fasthtml==0.12.1
+python_fasthtml @ git+https://github.com/AnswerDotAI/fasthtml.git
