@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title description">
   <title id="title">BabyARC abstraction and reasoning puzzle</title>
   <desc id="description">Two colored grids connected by an arrow, representing an abstraction and reasoning transformation.</desc>
-  <rect width="1200" height="720" rx="36" fill="#f5f3ed"/>
+  <rect width="1200" height="720" fill="#f5f3ed"/>
   <text x="96" y="108" fill="#292824" font-family="ui-monospace, monospace" font-size="22" font-weight="700" letter-spacing="4">BABYARC</text>
   <text x="96" y="145" fill="#77746b" font-family="ui-sans-serif, system-ui" font-size="16">a tiny abstraction &amp; reasoning dataset</text>
   <g transform="translate(126 220)">
