@@ -43,7 +43,6 @@ def get_projects():
     return [
         {
             "title": "GizzNote",
-            "category": "Document editor",
             "description": "A lightweight document editor for reading, writing, note-taking, and journaling. Keep ideas in Markdown, connect them with wikilinks, and talk to your notes when useful.",
             "links": [
                 {"label": "Open GizzNote ↗", "url": "https://gizznote.com"},
@@ -53,25 +52,21 @@ def get_projects():
                 },
             ],
             "image": "assets/gizznote.svg",
-            "featured": True,
         },
         {
             "title": "Pebble",
-            "category": "Learning tool",
             "description": "An AI tutor for K-12 students that helps them learn programming by building their own projects.",
             "links": [{"label": "Open Pebble ↗", "url": "https://getpebble.in"}],
             "image": "assets/pebble-1.png",
         },
         {
             "title": "Reader-1",
-            "category": "Hardware",
             "description": "A cyberdeck e-reader built with a Raspberry Pi and a Waveshare E-Ink display.",
             "links": [],
             "image": "assets/reader-1.png",
         },
         {
             "title": "BabyARC",
-            "category": "Research experiment",
             "description": "A tiny abstraction and reasoning dataset inspired by François Chollet's Abstraction and Reasoning Corpus.",
             "links": [
                 {
@@ -83,7 +78,6 @@ def get_projects():
         },
         {
             "title": "AiTone",
-            "category": "Creative coding",
             "description": "A browser-based music coding environment built with Tone.js, with an AI collaborator for modifying the music through natural language.",
             "links": [
                 {"label": "Open AiTone ↗", "url": "https://ai-tone.netlify.app/"}
@@ -92,7 +86,6 @@ def get_projects():
         },
         {
             "title": "Email Signature Generator",
-            "category": "Utility",
             "description": "A mobile-first tool for creating, customizing, previewing, and copying HTML email signatures.",
             "links": [
                 {
@@ -123,7 +116,6 @@ def get_social_links():
 
 
 def project_card(project):
-    featured = project.get("featured", False)
     project_links = [
         A(
             link["label"],
@@ -135,37 +127,16 @@ def project_card(project):
         for link in project.get("links", [])
     ]
 
-    container_classes = (
-        "border border-green-100 bg-green-50 rounded-2xl px-6 md:px-10 py-8 md:py-12 "
-        "flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12 mt-8 md:mt-12 mb-8"
-        if featured
-        else "border-b pb-8 md:pb-16 pt-8 md:pt-16 flex flex-col md:flex-row "
-        "items-start justify-between gap-6 md:gap-10"
-    )
-    title_classes = (
-        "text-3xl md:text-4xl font-medium font-serif"
-        if featured
-        else "text-xl md:text-2xl font-medium font-serif"
-    )
-    image_classes = (
-        "w-full md:w-3/5 rounded-xl"
-        if featured
-        else "w-full md:w-2/3 mt-2 md:mt-0"
-    )
-
     return Div(
         Div(
             Div(
-                P(
-                    "Featured project" if featured else project["category"],
-                    cls="text-xs uppercase tracking-widest text-green-800 font-sans mb-2"
-                    if featured
-                    else "text-xs uppercase tracking-widest text-gray-500 font-sans mb-2",
+                H3(
+                    project["title"],
+                    cls="text-xl md:text-2xl font-medium font-serif",
                 ),
-                H3(project["title"], cls=title_classes),
                 P(
                     project["description"],
-                    cls="text-gray-600 text-base md:text-lg mt-3",
+                    cls="text-gray-600 text-base md:text-lg mt-2",
                 ),
                 cls="flex flex-col items-start",
             ),
@@ -174,8 +145,13 @@ def project_card(project):
             else None,
             cls="flex flex-col items-stretch justify-between w-full md:max-w-md",
         ),
-        Img(src=project["image"], alt=f"{project['title']} project visual", cls=image_classes),
-        cls=container_classes,
+        Img(
+            src=project["image"],
+            alt=f"{project['title']} project visual",
+            cls="w-full md:w-2/3 mt-2 md:mt-0",
+        ),
+        cls="border-b pb-8 md:pb-16 pt-8 md:pt-16 flex flex-col md:flex-row "
+        "items-start justify-between gap-6 md:gap-10",
     )
 
 
