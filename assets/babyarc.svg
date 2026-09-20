@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title description">
+  <title id="title">BabyARC abstraction and reasoning puzzle</title>
+  <desc id="description">Two colored grids connected by an arrow, representing an abstraction and reasoning transformation.</desc>
+  <rect width="1200" height="720" rx="36" fill="#f5f3ed"/>
+  <text x="96" y="108" fill="#292824" font-family="ui-monospace, monospace" font-size="22" font-weight="700" letter-spacing="4">BABYARC</text>
+  <text x="96" y="145" fill="#77746b" font-family="ui-sans-serif, system-ui" font-size="16">a tiny abstraction &amp; reasoning dataset</text>
+  <g transform="translate(126 220)">
+    <rect width="320" height="320" rx="18" fill="#ffffff" stroke="#d6d1c6" stroke-width="3"/>
+    <g stroke="#e2ded5" stroke-width="3">
+      <path d="M80 0v320M160 0v320M240 0v320M0 80h320M0 160h320M0 240h320"/>
+    </g>
+    <rect x="3" y="3" width="74" height="74" rx="8" fill="#ef5a47"/>
+    <rect x="83" y="83" width="74" height="74" rx="8" fill="#ef5a47"/>
+    <rect x="163" y="163" width="74" height="74" rx="8" fill="#ef5a47"/>
+    <rect x="243" y="243" width="74" height="74" rx="8" fill="#ef5a47"/>
+    <rect x="243" y="3" width="74" height="74" rx="8" fill="#3c6df0"/>
+  </g>
+  <g transform="translate(516 340)" fill="none" stroke="#373631" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 40h130" stroke-width="7"/>
+    <path d="M105 14l27 26-27 26" stroke-width="7"/>
+  </g>
+  <g transform="translate(736 220)">
+    <rect width="320" height="320" rx="18" fill="#ffffff" stroke="#d6d1c6" stroke-width="3"/>
+    <g stroke="#e2ded5" stroke-width="3">
+      <path d="M80 0v320M160 0v320M240 0v320M0 80h320M0 160h320M0 240h320"/>
+    </g>
+    <rect x="3" y="3" width="74" height="74" rx="8" fill="#3c6df0"/>
+    <rect x="83" y="3" width="74" height="74" rx="8" fill="#3c6df0"/>
+    <rect x="163" y="3" width="74" height="74" rx="8" fill="#3c6df0"/>
+    <rect x="243" y="3" width="74" height="74" rx="8" fill="#3c6df0"/>
+    <rect x="3" y="83" width="74" height="74" rx="8" fill="#ef5a47"/>
+    <rect x="83" y="163" width="74" height="74" rx="8" fill="#ef5a47"/>
+    <rect x="163" y="243" width="74" height="74" rx="8" fill="#ef5a47"/>
+  </g>
+  <text x="126" y="598" fill="#77746b" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2">OBSERVE</text>
+  <text x="516" y="598" fill="#77746b" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2">INFER</text>
+  <text x="736" y="598" fill="#77746b" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2">TRANSFORM</text>
+</svg>
