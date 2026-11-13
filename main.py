@@ -21,10 +21,6 @@ def base_template(page_title, content):
             Meta(property="og:type", content="website"),
             Meta(name="twitter:card", content="summary"),
             Link(
-                rel="icon",
-                href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>",
-            ),
-            Link(
                 rel="stylesheet",
                 href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css",
             ),
@@ -51,19 +47,16 @@ def get_projects():
                     "url": "https://github.com/rsinghal757/agentmem",
                 },
             ],
-            "image": "assets/gizznote.svg",
         },
         {
             "title": "Pebble",
             "description": "An AI tutor for K-12 students that helps them learn programming by building their own projects.",
             "links": [{"label": "Open Pebble ↗", "url": "https://getpebble.in"}],
-            "image": "assets/pebble-1.png",
         },
         {
             "title": "Reader-1",
             "description": "A cyberdeck e-reader built with a Raspberry Pi and a Waveshare E-Ink display.",
             "links": [],
-            "image": "assets/reader-1.png",
         },
         {
             "title": "BabyARC",
@@ -74,7 +67,6 @@ def get_projects():
                     "url": "https://github.com/rsinghal757/babyARC",
                 }
             ],
-            "image": "assets/babyarc.svg",
         },
         {
             "title": "AiTone",
@@ -82,7 +74,6 @@ def get_projects():
             "links": [
                 {"label": "Open AiTone ↗", "url": "https://ai-tone.netlify.app/"}
             ],
-            "image": "assets/aitone-1.png",
         },
         {
             "title": "Email Signature Generator",
@@ -93,7 +84,6 @@ def get_projects():
                     "url": "https://emailsignature.in",
                 }
             ],
-            "image": "assets/emailsig-1.png",
         },
     ]
 
@@ -140,18 +130,12 @@ def project_card(project):
                 ),
                 cls="flex flex-col items-start",
             ),
-            Div(*project_links, cls="flex flex-wrap gap-4 mt-6 md:mt-10")
+            Div(*project_links, cls="flex flex-wrap gap-4 mt-4")
             if project_links
             else None,
-            cls="flex flex-col items-stretch justify-between w-full md:max-w-md",
+            cls="flex flex-col items-stretch w-full max-w-2xl",
         ),
-        Img(
-            src=project["image"],
-            alt=f"{project['title']} project visual",
-            cls="w-full md:w-2/3 mt-2 md:mt-0",
-        ),
-        cls="border-b pb-8 md:pb-16 pt-8 md:pt-16 flex flex-col md:flex-row "
-        "items-start justify-between gap-6 md:gap-10",
+        cls="border-b py-8 md:py-10",
     )
 
 
@@ -215,7 +199,7 @@ def get():
                 cls="text-2xl md:text-3xl font-medium font-serif border-b pb-4 md:pb-8 text-left",
             ),
             *[project_card(project) for project in projects],
-            cls="p-0 mb-12 md:mb-24",
+            cls="p-0 mb-12 md:mb-24 max-w-2xl",
         ),
         cls="max-w-7xl w-full leading-relaxed space-y-12",
     )
