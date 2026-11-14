@@ -196,10 +196,6 @@ def get():
             cls="flex flex-col items-start space-y-2 mb-8 md:mb-12 max-w-2xl",
         ),
         Div(
-            H2(
-                "Selected Projects",
-                cls="text-xl md:text-2xl font-medium font-sans pb-2 md:pb-4 text-left",
-            ),
             *[project_card(project) for project in projects],
             cls="p-0 mb-12 md:mb-24 max-w-2xl",
         ),
