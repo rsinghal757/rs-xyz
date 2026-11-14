@@ -29,7 +29,8 @@ def base_template(page_title, content):
             Div(
                 content,
                 cls="bg-white text-gray-900 min-h-screen p-4 sm:p-4 md:p-8 lg:p-16 xl:p-36 xl:pt-16 xl:pb-12 font-serif flex flex-col items-stretch",
-            )
+            ),
+            cls="bg-white",
         ),
     )
 
@@ -112,7 +113,7 @@ def project_card(project):
             href=link["url"],
             target="_blank",
             rel="noopener noreferrer",
-            cls="text-gray-700 hover:underline text-base md:text-lg",
+            cls="text-gray-700 hover:underline text-sm md:text-base",
         )
         for link in project.get("links", [])
     ]
@@ -122,11 +123,11 @@ def project_card(project):
             Div(
                 H3(
                     project["title"],
-                    cls="text-xl md:text-2xl font-medium font-serif",
+                    cls="text-lg md:text-xl font-medium font-serif",
                 ),
                 P(
                     project["description"],
-                    cls="text-gray-600 text-base md:text-lg mt-2",
+                    cls="text-gray-600 text-sm md:text-base mt-2",
                 ),
                 cls="flex flex-col items-start",
             ),
@@ -135,7 +136,7 @@ def project_card(project):
             else None,
             cls="flex flex-col items-stretch w-full max-w-2xl",
         ),
-        cls="border-b py-8 md:py-10",
+        cls="py-6 md:py-8",
     )
 
 
@@ -147,9 +148,10 @@ def get():
     body_content = Div(
         Div(
             Div(
-                H3(
-                    "Rohit Singhal",
-                    cls="text-3xl md:text-4xl lg:text-5xl font-bold font-serif leading-tight",
+                H1(
+                    Span("0xR", cls="text-blue-600"),
+                    Span("ohitSinghal", cls="text-gray-200"),
+                    cls="text-2xl md:text-3xl lg:text-4xl font-bold font-serif leading-tight",
                 ),
                 Div(
                     *[
@@ -158,7 +160,7 @@ def get():
                             href=link["url"],
                             target="_blank",
                             rel="noopener noreferrer",
-                            cls="text-gray-600 font-serif hover:underline text-sm md:text-base",
+                            cls="text-gray-600 font-serif hover:underline text-xs md:text-sm",
                         )
                         for link in social_links
                     ],
@@ -169,7 +171,7 @@ def get():
             Div(
                 H3(
                     "The world is a museum of passion projects.",
-                    cls="text-gray-900 font-serif text-base md:text-lg italic",
+                    cls="text-gray-900 font-serif text-sm md:text-base italic",
                 ),
                 Div(
                     A(
@@ -177,9 +179,9 @@ def get():
                         href="https://x.com/collision/status/1529452415346302976",
                         target="_blank",
                         rel="noopener noreferrer",
-                        cls="text-gray-500 italic text-right text-sm md:text-base",
+                        cls="text-gray-500 italic text-right text-xs md:text-sm",
                     ),
-                    P(", Stripe", cls="text-gray-500 italic text-right text-sm md:text-base"),
+                    P(", Stripe", cls="text-gray-500 italic text-right text-xs md:text-sm"),
                     cls="flex flex-row items-end",
                 ),
                 cls="flex flex-col items-start md:items-end space-y-0 mt-4",
@@ -189,21 +191,21 @@ def get():
         Div(
             P(
                 "I'm Rohit. For money and fun, I do software design and engineering.",
-                cls="text-gray-600 text-base md:text-lg",
+                cls="text-gray-600 text-sm md:text-base",
             ),
             cls="flex flex-col items-start space-y-2 mb-8 md:mb-12 max-w-2xl",
         ),
         Div(
             H2(
                 "Selected Projects",
-                cls="text-2xl md:text-3xl font-medium font-serif border-b pb-4 md:pb-8 text-left",
+                cls="text-xl md:text-2xl font-medium font-serif pb-2 md:pb-4 text-left",
             ),
             *[project_card(project) for project in projects],
             cls="p-0 mb-12 md:mb-24 max-w-2xl",
         ),
         cls="max-w-7xl w-full leading-relaxed space-y-12",
     )
-    return base_template("Rohit Singhal", body_content)
+    return base_template("0xRohitSinghal", body_content)
 
 
 serve(port=int(os.environ.get("PORT", 5001)))
