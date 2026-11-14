@@ -28,7 +28,7 @@ def base_template(page_title, content):
         Body(
             Div(
                 content,
-                cls="bg-white text-gray-900 min-h-screen p-4 sm:p-4 md:p-8 lg:p-16 xl:p-36 xl:pt-16 xl:pb-12 font-serif flex flex-col items-stretch",
+                cls="bg-white text-gray-900 min-h-screen p-4 sm:p-4 md:p-8 lg:p-16 xl:p-36 xl:pt-16 xl:pb-12 font-sans flex flex-col items-stretch",
             ),
             cls="bg-white",
         ),
@@ -123,7 +123,7 @@ def project_card(project):
             Div(
                 H3(
                     project["title"],
-                    cls="text-lg md:text-xl font-medium font-serif",
+                    cls="text-lg md:text-xl font-medium font-sans",
                 ),
                 P(
                     project["description"],
@@ -151,7 +151,7 @@ def get():
                 H1(
                     Span("0xR", cls="text-blue-600"),
                     Span("ohitSinghal", cls="text-gray-200"),
-                    cls="text-2xl md:text-3xl lg:text-4xl font-bold font-serif leading-tight",
+                    cls="text-2xl md:text-3xl lg:text-4xl font-bold font-sans leading-tight",
                 ),
                 Div(
                     *[
@@ -160,7 +160,7 @@ def get():
                             href=link["url"],
                             target="_blank",
                             rel="noopener noreferrer",
-                            cls="text-gray-600 font-serif hover:underline text-xs md:text-sm",
+                            cls="text-gray-600 font-sans hover:underline text-xs md:text-sm",
                         )
                         for link in social_links
                     ],
@@ -171,7 +171,7 @@ def get():
             Div(
                 H3(
                     "The world is a museum of passion projects.",
-                    cls="text-gray-900 font-serif text-sm md:text-base italic",
+                    cls="text-gray-900 font-sans text-sm md:text-base italic",
                 ),
                 Div(
                     A(
@@ -198,7 +198,7 @@ def get():
         Div(
             H2(
                 "Selected Projects",
-                cls="text-xl md:text-2xl font-medium font-serif pb-2 md:pb-4 text-left",
+                cls="text-xl md:text-2xl font-medium font-sans pb-2 md:pb-4 text-left",
             ),
             *[project_card(project) for project in projects],
             cls="p-0 mb-12 md:mb-24 max-w-2xl",
