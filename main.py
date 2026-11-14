@@ -123,7 +123,7 @@ def project_card(project):
             Div(
                 H3(
                     project["title"],
-                    cls="text-lg md:text-xl font-medium font-sans",
+                    cls="text-sm md:text-base font-medium font-sans",
                 ),
                 P(
                     project["description"],
