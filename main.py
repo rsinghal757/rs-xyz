@@ -147,59 +147,49 @@ def get():
     social_links = get_social_links()
     body_content = Div(
         Div(
-            Div(
-                H1(
-                    Span("0xR", cls="text-blue-600"),
-                    Span("ohitSinghal", cls="text-gray-200"),
-                    cls="text-2xl md:text-3xl lg:text-4xl font-bold font-sans leading-tight",
-                ),
-                Div(
-                    *[
-                        A(
-                            link["platform"],
-                            href=link["url"],
-                            target="_blank",
-                            rel="noopener noreferrer",
-                            cls="text-gray-600 font-sans hover:underline text-xs md:text-sm",
-                        )
-                        for link in social_links
-                    ],
-                    cls="flex flex-row flex-wrap text-gray-500 gap-x-4 gap-y-2 lg:gap-x-8",
-                ),
-                cls="flex flex-col items-start space-y-2 mb-4",
+            H1(
+                Span("0xR", cls="text-blue-600"),
+                Span("ohitSinghal", cls="text-gray-200"),
+                cls="text-2xl md:text-3xl lg:text-4xl font-bold font-sans leading-tight",
             ),
             Div(
-                H3(
-                    "The world is a museum of passion projects.",
-                    cls="text-gray-900 font-sans text-sm md:text-base italic",
-                ),
-                Div(
+                *[
                     A(
-                        "John Collison",
-                        href="https://x.com/collision/status/1529452415346302976",
+                        link["platform"],
+                        href=link["url"],
                         target="_blank",
                         rel="noopener noreferrer",
-                        cls="text-gray-500 italic text-right text-xs md:text-sm",
-                    ),
-                    P(", Stripe", cls="text-gray-500 italic text-right text-xs md:text-sm"),
-                    cls="flex flex-row items-end",
-                ),
-                cls="flex flex-col items-start md:items-end space-y-0 mt-4",
+                        cls="text-gray-600 font-sans hover:underline text-xs md:text-sm",
+                    )
+                    for link in social_links
+                ],
+                cls="flex flex-row flex-wrap text-gray-500 gap-x-4 gap-y-2 lg:gap-x-8",
             ),
-            cls="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-12",
+            cls="flex flex-col items-start space-y-2",
         ),
         Div(
             P(
                 "I'm Rohit. For money and fun, I do software design and engineering.",
                 cls="text-gray-600 text-sm md:text-base",
             ),
-            cls="flex flex-col items-start space-y-2 mb-8 md:mb-12 max-w-2xl",
+            P(
+                "The world is a museum of passion projects. ",
+                A(
+                    "— John Collison, Stripe",
+                    href="https://x.com/collision/status/1529452415346302976",
+                    target="_blank",
+                    rel="noopener noreferrer",
+                    cls="hover:underline",
+                ),
+                cls="text-gray-500 text-xs md:text-sm italic",
+            ),
+            cls="space-y-3",
         ),
         Div(
             *[project_card(project) for project in projects],
-            cls="p-0 mb-12 md:mb-24 max-w-2xl",
+            cls="p-0 mb-12 md:mb-24",
         ),
-        cls="max-w-7xl w-full leading-relaxed space-y-12",
+        cls="max-w-2xl w-full mx-auto text-left leading-relaxed space-y-12",
     )
     return base_template("0xRohitSinghal", body_content)
 
