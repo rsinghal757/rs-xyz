@@ -150,7 +150,7 @@ def get():
             H1(
                 Span("0xR", cls="text-blue-600"),
                 Span("ohitSinghal", cls="text-gray-200"),
-                cls="text-2xl md:text-3xl lg:text-4xl font-bold font-sans leading-tight",
+                cls="text-2xl md:text-3xl lg:text-4xl font-bold font-mono leading-tight",
             ),
             Div(
                 *[
