@@ -42,9 +42,9 @@ def get_projects():
             "title": "GizzNote",
             "description": "A lightweight document editor for reading, writing, note-taking, and journaling. Keep ideas in Markdown, connect them with wikilinks, and talk to your notes when useful.",
             "links": [
-                {"label": "Open GizzNote ↗", "url": "https://gizznote.com"},
+                {"label": "Open GizzNote", "url": "https://gizznote.com"},
                 {
-                    "label": "View source →",
+                    "label": "View source",
                     "url": "https://github.com/rsinghal757/agentmem",
                 },
             ],
@@ -52,7 +52,7 @@ def get_projects():
         {
             "title": "Pebble",
             "description": "An AI tutor for K-12 students that helps them learn programming by building their own projects.",
-            "links": [{"label": "Open Pebble ↗", "url": "https://getpebble.in"}],
+            "links": [{"label": "Open Pebble", "url": "https://getpebble.in"}],
         },
         {
             "title": "Reader-1",
@@ -64,7 +64,7 @@ def get_projects():
             "description": "A tiny abstraction and reasoning dataset inspired by François Chollet's Abstraction and Reasoning Corpus.",
             "links": [
                 {
-                    "label": "View source →",
+                    "label": "View source",
                     "url": "https://github.com/rsinghal757/babyARC",
                 }
             ],
@@ -73,7 +73,7 @@ def get_projects():
             "title": "AiTone",
             "description": "A browser-based music coding environment built with Tone.js, with an AI collaborator for modifying the music through natural language.",
             "links": [
-                {"label": "Open AiTone ↗", "url": "https://ai-tone.netlify.app/"}
+                {"label": "Open AiTone", "url": "https://ai-tone.netlify.app/"}
             ],
         },
         {
@@ -81,7 +81,7 @@ def get_projects():
             "description": "A mobile-first tool for creating, customizing, previewing, and copying HTML email signatures.",
             "links": [
                 {
-                    "label": "Create a signature ↗",
+                    "label": "Create a signature",
                     "url": "https://emailsignature.in",
                 }
             ],
@@ -113,7 +113,7 @@ def project_card(project):
             href=link["url"],
             target="_blank",
             rel="noopener noreferrer",
-            cls="text-gray-700 hover:underline text-sm md:text-base",
+            cls="text-gray-500 hover:text-gray-700 hover:underline text-xs md:text-sm",
         )
         for link in project.get("links", [])
     ]
